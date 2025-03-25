@@ -1,6 +1,6 @@
 import math
 
-def nod(N):
+def max_gcd_split(N):
     max_d = 1
     for i in range(1, int(math.sqrt(N)) + 1):
         if N % i == 0:
@@ -9,7 +9,10 @@ def nod(N):
             if N // i <= N // 2:
                 max_d = max(max_d, N // i)
     return max_d, N - max_d
+with open('input.txt', 'r') as infile:
+    N = int(infile.readline().strip())
+    
+A, B = max_gcd_split(N)   
 
-N = int(input())
-A, B = nod(N)
-print(A, B)
+with open('output.txt', 'w') as outfile:
+    outfile.write(f"{A} {B}\n")
